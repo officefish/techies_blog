@@ -1,0 +1,16 @@
+.site-navigation {
+    @apply flex justify-between w-full h-16 bg-white text-gray-700;
+
+    span {
+        @apply flex items-center text-2xl ml-8;
+    }
+
+    ul {
+        @apply flex items-center space-x-4 h-full mx-0 mt-0 mr-5 list-none;
+    }
+
+    a {
+        @apply no-underline py-5 text-lg hover:text-emerald-700;
+    }
+}
+
