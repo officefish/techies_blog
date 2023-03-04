@@ -4,7 +4,7 @@ import { lazy, Suspense } from 'react'
 
 const PageRenderer = () => {    
     const { page } = useParams()
-    const Element = lazy(() => import(`../pages/${page}`))
+    const Element = lazy(() => import(`../pages/${page}.jsx`))
     return (
         <Suspense fallback={<div>Loading...</div>}>
           <Element />
