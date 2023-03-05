@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "force":"vite --force",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -14,6 +15,7 @@
     "antd": "^5.2.3",
     "moment": "^2.29.4",
     "node-sass": "^8.0.0",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.8.2",

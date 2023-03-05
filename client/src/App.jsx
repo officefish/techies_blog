@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Navigation from './combonents/navigation'
+import Navigation from './components/navigation'
 import { BrowserRouter as Router} from 'react-router-dom'
 import { Route, Routes, Navigate } from "react-router-dom"
 
