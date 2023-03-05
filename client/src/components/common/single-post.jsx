@@ -2,7 +2,8 @@ import React from 'react'
 
 const Post = ({post, index, tagsOnTop}) => {
   return (
-    <div>{post}
+    <div>
+      <img src={`//localhost:8000/${post.media_url}`} alt={post.media_url} />
     </div>
   )
 }
