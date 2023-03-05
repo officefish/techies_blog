@@ -4,7 +4,7 @@ import Post from './single-post'
 const PostMasonry = ({posts, columns, tagsOnTop}) => /**/ {
 
     return (
-        <section className="masonry">
+        <section className="masonry_post_container">
             {posts.map((post, index) => 
                 <Post {...{post, index, tagsOnTop, key: index} } />
             )}
