@@ -1,12 +1,13 @@
-import trending from '../assets/mocks/trending'
-import PostMasonry from '../combonents/common/post-masonry'
+import mocks from '../assets/mocks'
+import PostMasonry from '../components/common/post-masonry.jsx'
 
 const Home = () => {
+
     return ( 
         <section className="container home">
             <div className="row">
                 <h2>Home</h2>
-                {/*<PostMasonry post={trending} columns={3}/>*/}
+                <PostMasonry posts={mocks.trending} columns={3}/>
             </div>
         </section>
     )

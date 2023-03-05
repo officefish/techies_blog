@@ -7,9 +7,9 @@ import './assets/scss/base.scss'
 //import '@quasar/extras/ionicons-v4/'
 
 import { navLinks } from './navlinks'
-import PageRenderer from './combonents/page-renderer'
+import PageRenderer from './components/page-renderer'
 
-function App() {
+function Application() {
   const [count, setCount] = useState(0)
 
   const user = {
@@ -32,4 +32,4 @@ function App() {
   )
 }
 
-export default App
+export default Application
