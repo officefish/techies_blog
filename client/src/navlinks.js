@@ -1,19 +1,23 @@
 export const navLinks = [
     {
-        title: 'Home',
+        title: 'About us',
         path: '/'
     },
     {
-        title: 'Blog',
-        path: '/blog'
-    },
-    {
-        title: 'Contact us',
+        title: 'Contact us.',
         path: '/contact-us'
     },
     {
-        title: 'Login',
-        path: '/login'
+        title: 'Studing with us.',
+        path: '/studing'
+    },
+    {
+        title: 'Support us.',
+        path: '/donation'
+    },
+    {
+        title: 'Sign in.',
+        path: '/sign-in'
     }
 ]
 

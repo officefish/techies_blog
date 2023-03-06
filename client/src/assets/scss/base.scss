@@ -4,7 +4,16 @@
 
 @import './variables';
 @import './navigation';
+@import './header';
 @import './post';
+@import './lattice';
+
+:root {
+    --background-color: black;
+    --text-color: hsl(0, 0%, 100%);
+}
+
+@import './sliced-effect';
 
 body {
     background: #edf2f7;

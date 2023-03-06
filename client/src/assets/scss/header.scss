@@ -1,0 +1,23 @@
+.header_container {
+    @apply fixed z-50 top-0 left-0 w-full
+    shadow-lg
+    shadow-gray-900
+    flex items-center justify-between p-4 h-20 bg-gray-900;
+}
+
+.logo_wrapper {
+    @apply h-16 text-3xl bg-gray-900 cursor-pointer uppercase;
+}
+
+.logo_top {
+    @apply bg-gray-900 text-gray-600 group-hover:text-cyan-300;
+}
+
+.logo_bottom {
+    @apply bg-gradient-to-t from-gray-800 to-gray-600
+    group-hover:bg-gradient-to-b group-hover:from-blue-900 group-hover:to-cyan-300;
+}
+
+.header_navbar {
+    @apply flex items-center justify-center font-display text-gray-500 text-sm mt-3;
+}

@@ -1,0 +1,44 @@
+.lattice_container {
+  @apply h-[400px] w-full;
+  background: radial-gradient(ellipse at bottom, #5091DD 0%, #030617 100%);
+}
+
+$lineColor : #030617;
+$step : 3;
+$borderWeight: 1px;
+
+@function borderShadow ($n) { 
+  $value: '0px 0px #{$lineColor}';
+  @for $i from 0 through $n {
+    $value: '#{$value} , 0px #{($step)*$i}px #{$lineColor}';
+  }
+  @return unquote($value);
+}
+
+@function stripeShadow ($n) {
+  $value: '0px 0px #{$lineColor}';
+  @for $i from 0 through $n {
+    $value: '#{$value} , #{($step)*$i}px 0px #{$lineColor}';
+  }
+
+  @return unquote($value);
+}
+
+$border:  borderShadow(133);
+$stripe:  stripeShadow(1000);
+
+.lattice {
+
+  @apply w-full;
+  height: $borderWeight;
+  box-shadow: $border;
+  
+  &:after {
+    @apply h-[400px];
+    content: "";
+    position: absolute;
+    width: $borderWeight;
+    box-shadow: $stripe;
+  }
+}
+    

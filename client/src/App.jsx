@@ -8,6 +8,7 @@ import './assets/scss/base.scss'
 
 import { navLinks } from './navlinks'
 import PageRenderer from './components/page-renderer'
+import Header from './components/common/header/header'
 
 function Application() {
   const [count, setCount] = useState(0)
@@ -20,7 +21,14 @@ function Application() {
   return (
     <Router>
       <div className="App">
-        <Navigation navlinks={navLinks} user={user}/>
+        {/* <Navigation navlinks={navLinks} user={user}/> */}
+        <Header user={user}/>
+        <div className="h-20"></div>
+        <div className="h-[400px]">
+          <div className="lattice_container">
+            <div className="lattice"></div>
+          </div>
+        </div>
       </div>
       <Routes>
         <Route path='/' element={<Navigate to="/home" />} />
