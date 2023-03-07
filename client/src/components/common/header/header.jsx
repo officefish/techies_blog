@@ -7,7 +7,7 @@ const Header = ({user}) => {
     <header className='header_container'>
         <div className='flex items-center justify-end'>
             <Logo />
-            <div className='text-sm text-gray-500 mt-3 ml-2 font-display cursor-default'>
+            <div className='header_description'>
                 <span>Blog</span>
                 <span className='hidden md:inline-flex md:ml-1'>about programming</span> 
                 <span className='hidden lg:inline-flex lg:mx-1' >with software techies and</span><a 
