@@ -4,7 +4,8 @@ import Logo from './Logo'
 
 const Header = ({user}) => {
   return (
-    <header className='header_container'>
+    <div>
+      <header className='header_container'>
         <div className='flex items-center justify-end'>
             <Logo />
             <div className='header_description'>
@@ -17,7 +18,9 @@ const Header = ({user}) => {
             </div>
         </div>
         <HeaderNavbar />
-    </header>
+      </header>
+      <div className="header_offset"></div>
+    </div>
   )
 }
 

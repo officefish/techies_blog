@@ -2,12 +2,15 @@
 
 
 .categories_container {
-    @apply relative flex flex-col items-center h-80 px-2 w-full shadow-gray-700 shadow-t-md;
+    @apply relative flex flex-col items-center h-80 px-2 w-full;
+    // shadow-gray-700 shadow-t-md;
     //background: #bbb;
-    background: #e0e5ec;
+    //background: #e0e5ec;
+    background: #edf2f7;
 
     h1 {
         @apply relative text-cyan-800 text-3xl lg:text-4xl font-medium align-middle;
+        //font-family: "Old English", serif;
         font-family: "Cormorant Garamond", serif;
     }
 
@@ -19,14 +22,15 @@
 
 .categories_wrapper {
     @apply relative;
-    background: #e0e5ec;
+    //background: #e0e5ec;
+    background: #edf2f7;
     
     ul {
         @apply grid grid-rows-3 md:grid-rows-2 xl:grid-rows-1 grid-flow-col justify-items-center gap-1;
     } 
 
     &.fixed { /*  */
-        @apply flex flex-col items-center w-full px-2 py-2 z-10  shadow-blue-900 shadow-sm;
+        @apply flex flex-col items-center w-full px-2 py-2 z-10; //  shadow-blue-900 shadow-sm;
         position: fixed;
         top: 60px;
         left: 0;

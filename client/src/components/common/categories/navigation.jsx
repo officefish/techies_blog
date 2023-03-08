@@ -1,24 +1,30 @@
 import { Link } from "react-router-dom"
 import { UserOutlined, MenuOutlined, ArrowDownOutlined } from '@ant-design/icons'
 import { Avatar } from "antd"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import NavButton from "./nav-button"
+import {CategoryContext} from "../../../context"
 
 
 const MENU_FIXED_OFFSET = 460 //Constant for paste menu fixed position while scrolling
 
 const Navigation = ({categories}) => {
 
+    const [currentCategory, setCurrentCategory] = useContext(CategoryContext)
+
     //const [isActiveMenu, setIsActiveMenu] = useState(true) 
-    const [activeCategory, setActiveCategory] = useState('feed')
+    //const [activeCategory, setActiveCategory] = useState('master')
+    const selectCategory = (e) => {
+        setCurrentCategory(e.target.value)
+    }
+
     const [fixedMenu, setFixedMenu] = useState(window.scrollY >= MENU_FIXED_OFFSET)
 
     //const toggleIsActiveMenu = () => setIsActiveMenu(!isActiveMenu)
-    const selectCategory = (e) => setActiveCategory(e.target.value)
+    
 
     useEffect(_ => {
         const handleScroll = _ => { 
-            console.log(window.scrollY)
             const fixed = window.scrollY >= MENU_FIXED_OFFSET
             setFixedMenu(fixed)
         }
@@ -39,13 +45,12 @@ const Navigation = ({categories}) => {
                     <NavButton 
                     path={category.path} 
                     title={category.title}
-                    activeCategory={activeCategory}
-                    setActiveCategory={selectCategory}
+                    currentCategory={currentCategory}
+                    selectCategory={selectCategory}
                     />
                 </li>)}
             </ul>  
         </div>
-        <div style={{  }}/>
         <div className="line"/>
         <div className="scroll_wrapper">
             <span>Scroll it!</span>

@@ -11,6 +11,7 @@
   .custom-btn {
     //padding: 10px 25px;
     @apply text-base lg:text-lg xl:text-base 2xl:text-lg lg:w-auto px-3;
+    //font-family: "Old English", serif;
     font-family: "Cormorant Garamond", serif;
     //font-size: 24px;
     //font-weight: 500;
@@ -29,7 +30,8 @@
     
 
     &:hover:enabled {
-      @apply text-cyan-700;
+      //@apply text-cyan-700;
+      @apply text-blue-500;
       box-shadow:
       -7px -7px 20px 0px #fff9,
       -4px -4px 5px 0px #fff9,
@@ -39,7 +41,8 @@
     }
 
     &:enabled {
-      @apply text-blue-500;
+      //@apply text-blue-500;
+      @apply text-cyan-700;
       border: none;
       border-radius: 3px;
       //transition: all 0.3s ease;
@@ -61,7 +64,9 @@
     }
 
     &:disabled {
-      @apply cursor-default bg-cyan-200 text-cyan-900 font-medium;
+      @apply cursor-default bg-cyan-200 font-medium
+      text-cyan-900
+      ;
       transition: none;
       overflow: hidden;
     }

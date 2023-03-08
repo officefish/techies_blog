@@ -9,6 +9,18 @@
 @import './lattice';
 @import './neumorphic-button';
 
+
+@font-face {
+    font-family: "Old English";
+    src: url('../../../fonts/old-english/EngraversOldEnglish-Med.otf') format("opentype");
+}
+
+@font-face {
+    font-family: "Old English";
+    font-weight: bold;
+    src: url('../../../fonts/old-english/EngraversOldEnglish-Bd.otf') format("opentype");
+}
+
 :root {
     --background-color: black;
     --text-color: hsl(0, 0%, 100%);
@@ -19,3 +31,9 @@
 body {
     background: #edf2f7;
 }
+
+canvas {
+    @apply w-full h-[400px] top-[35px];
+    //height: 100vh;
+    //width: 100vw;
+  }

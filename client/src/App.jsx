@@ -9,9 +9,13 @@ import './assets/scss/base.scss'
 import { navLinks } from './navlinks'
 import PageRenderer from './components/page-renderer'
 import Header from './components/common/header/header'
+import LatticeMonitor from './components/common/lattice_monitor/lattice-monitor'
+
+import { CategoryContext } from './context'
 
 function Application() {
   
+  const [currentCategory, setCurrentCategory] = useState("master")
 
   const user = {
     firstName: "Sergey",
@@ -19,9 +23,10 @@ function Application() {
   }
 
   const categories = [
-    {path: 'feed', title: 'Feed'}, 
+    {path: 'master', title: 'Master'}, 
     {path: 'infographics', title: 'Infographics'},
     {path: 'fundamentals', title: 'Fundamentals'},
+    {path: 'development', title: 'Development'},   
     {path: 'libraries', title: 'Libraries'},
     {path: 'code-review', title: 'Code review'},
     {path: 'refactoring', title: 'Refactoring'},
@@ -30,28 +35,24 @@ function Application() {
     {path: 'widgets', title: 'Widgets'},
     {path: 'books', title: 'Books'},     
     {path: 'gadgets', title: 'Gadgets'},    
-    {path: 'games', title: 'Games'},   
   ]
 
   return (
-    <Router>
-      <div className="App">
-        {/* <Navigation navlinks={navLinks} user={user}/> */}
-        <Header user={user}/>
-        <div className="h-16"></div>
-        <div className="h-[400px]">
-          <div className="lattice_container">
-            <div className="lattice"></div>
-          </div>
+    <CategoryContext.Provider value={[currentCategory, setCurrentCategory] }>
+      <Router>
+        <div className="App">
+          {/* <Navigation navlinks={navLinks} user={user}/> */}
+          <Header user={user}/>
+          <LatticeMonitor />
         </div>
-      </div>
-      <Navigation categories={categories}/>
-      <Routes>
-        <Route path='/' element={<Navigate to="/home" />} />
-        <Route path=":page" element={<PageRenderer />} />
-        <Route path='*' element={() => 404} />
-      </Routes>
-    </Router>
+        <Navigation categories={categories}/>
+        <Routes>
+          <Route path='/' element={<Navigate to="/home" />} />
+          <Route path=":page" element={<PageRenderer />} />
+          <Route path='*' element={() => 404} />
+        </Routes>
+      </Router>
+    </CategoryContext.Provider>
  
   )
 }
