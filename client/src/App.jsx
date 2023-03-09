@@ -40,17 +40,18 @@ function Application() {
   return (
     <CategoryContext.Provider value={[currentCategory, setCurrentCategory] }>
       <Router>
-        <div className="App">
+        <div className="App min-h-screen">
           {/* <Navigation navlinks={navLinks} user={user}/> */}
           <Header user={user}/>
           <LatticeMonitor />
+          <Navigation categories={categories}/>
+          <Routes>
+              <Route path='/' element={<Navigate to="/home" />} />
+              <Route path=":page" element={<PageRenderer />} />
+              <Route path='*' element={() => 404} />
+          </Routes>
         </div>
-        <Navigation categories={categories}/>
-        <Routes>
-          <Route path='/' element={<Navigate to="/home" />} />
-          <Route path=":page" element={<PageRenderer />} />
-          <Route path='*' element={() => 404} />
-        </Routes>
+       
       </Router>
     </CategoryContext.Provider>
  

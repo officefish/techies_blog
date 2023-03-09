@@ -1,9 +1,11 @@
 import React from 'react'
 import particleText from './particle-text'
-import animation from '../../../assets/animation'
+import utilities from './utilities'
 
 import {useRef, useEffect, useState, useContext} from 'react'
 import {CategoryContext} from '../../../context'
+
+const CANVAS_HEIGHT = 350
 
 const LatticeMonitor = () => {
 
@@ -20,10 +22,16 @@ const LatticeMonitor = () => {
     const element = ref.current;
   
     if (!initialized) {
-      animation.initGlobals()
-      const renderOptions = animation.createRenderingContext(element, window.innerWidth, 400)
+      utilities.initGlobals()
+      const isFullWidth = true
+      const renderOptions = utilities.createRenderingContext(
+          element, window.innerWidth, CANVAS_HEIGHT, isFullWidth)
       particleText.setBuffer(renderOptions.buffer)
       particleText.setCtx(renderOptions.ctx)
+
+      particleText.setFullWidth(isFullWidth)
+      particleText.setHeight(CANVAS_HEIGHT)
+      
       particleText.start()
       initialized = true
     } 
@@ -37,8 +45,8 @@ const LatticeMonitor = () => {
    },[currentCategory]);
 
   return (
-      <div className="lattice_container h-[400px]">
-            <div ref={ref} id="box" onClick={boxOnCLick}>
+      <div className={`lattice_container`}>
+            <div className='w-full overflow-hidden' ref={ref} id="box" onClick={boxOnCLick}>
             <div className="lattice"></div>
       </div>
     </div>

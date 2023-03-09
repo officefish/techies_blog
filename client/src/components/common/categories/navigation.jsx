@@ -1,27 +1,35 @@
 import { Link } from "react-router-dom"
 import { UserOutlined, MenuOutlined, ArrowDownOutlined } from '@ant-design/icons'
 import { Avatar } from "antd"
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect, useContext, useRef } from "react"
 import NavButton from "./nav-button"
 import {CategoryContext} from "../../../context"
 
 
-const MENU_FIXED_OFFSET = 460 //Constant for paste menu fixed position while scrolling
+const MENU_FIXED_OFFSET = 350 + 56 + 12 //* lattice.height + h1.height + br.height
+
 
 const Navigation = ({categories}) => {
 
+    const ref = useRef(null)
+
     const [currentCategory, setCurrentCategory] = useContext(CategoryContext)
-
-    //const [isActiveMenu, setIsActiveMenu] = useState(true) 
-    //const [activeCategory, setActiveCategory] = useState('master')
-    const selectCategory = (e) => {
-        setCurrentCategory(e.target.value)
-    }
-
-    const [fixedMenu, setFixedMenu] = useState(window.scrollY >= MENU_FIXED_OFFSET)
-
-    //const toggleIsActiveMenu = () => setIsActiveMenu(!isActiveMenu)
+    const selectCategory = (e) => setCurrentCategory(e.target.value)
     
+    const [fixedMenu, setFixedMenu] = useState(window.scrollY >= MENU_FIXED_OFFSET)
+    //const toggleIsActiveMenu = () => setIsActiveMenu(!isActiveMenu)
+
+    const [spacerSyle, setSpacerSyle] = useState({})
+
+    function disableScrolling(){
+        var x=window.scrollX
+        var y=window.scrollY
+        window.onscroll=function(){window.scrollTo(x, y)}
+    }
+    
+    function enableScrolling(){
+        window.onscroll=function(){}
+    }
 
     useEffect(_ => {
         const handleScroll = _ => { 
@@ -34,12 +42,21 @@ const Navigation = ({categories}) => {
         }
       }, [])
 
-     
+       useEffect(_ => {
+            const element = ref.current
+            setSpacerSyle({
+                "height" : element.clientHeight + "px",
+            })
+       }, [fixedMenu])
+
+      
+    
+
     return (
     <div className='categories_container'>
-        <h1>Categories:</h1>
+        <h1 className="insetshadow ">Categories:</h1>
         <div className="line"/>
-        <div className={`categories_wrapper ${fixedMenu && 'fixed'}`}>
+        <div ref={ref} className = {`categories_wrapper ${fixedMenu && 'fixed'}`}>
             <ul>
                 {categories.map((category, index) => <li key={index}>
                     <NavButton 
@@ -51,14 +68,16 @@ const Navigation = ({categories}) => {
                 </li>)}
             </ul>  
         </div>
+        <div style={spacerSyle} className={`${!fixedMenu && 'hidden'}`}></div>
         <div className="line"/>
-        <div className="scroll_wrapper">
+        <div className="flex-1" />
+        {/* <div className="scroll_wrapper">
             <span>Scroll it!</span>
             <div className="flex items-center justify-center mx-2 w-10 h-10 rounded-full bg-cyan-700">
                 <ArrowDownOutlined style={{ fontSize: '16px', color: '#e0e5ec' }} />
             </div>
             <span>Scroll it!</span>
-        </div>
+        </div> */}
     </div>) 
 
 }

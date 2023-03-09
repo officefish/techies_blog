@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  mode: 'jit',
   content: 
   ["./index.html",
   "./src/**/*.{js,ts,jsx,tsx}"],
@@ -66,8 +67,12 @@ module.exports = {
 
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
+    },
+    theme: {
+      fontFamily: {
+        'old-eng': ['ui-sans-serif', 'system-ui'],
+      }
     }
-   
   },
   plugins: [],
 }

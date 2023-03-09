@@ -10,11 +10,10 @@
   }
   .custom-btn {
     //padding: 10px 25px;
-    @apply text-base lg:text-lg xl:text-base 2xl:text-lg lg:w-auto px-3;
+    @apply tracking-wide xl:tracking-normal text-base lg:text-lg xl:text-base 2xl:text-lg lg:w-auto px-3 font-semibold;
     //font-family: "Old English", serif;
     font-family: "Cormorant Garamond", serif;
     //font-size: 24px;
-    //font-weight: 500;
     background: transparent;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -26,6 +25,7 @@
   /* 1 */
   .btn-1 {
     border: none;
+    //letter-spacing: .125em;
     //transition: all 0.3s ease;
     
 
@@ -38,16 +38,24 @@
       7px 7px 20px 0px #0002,
       4px 4px 5px 0px #0001;
       transition: all 0.3s ease;
+      text-shadow: none;
     }
 
     &:enabled {
       //@apply text-blue-500;
-      @apply text-cyan-700;
-      border: none;
-      border-radius: 3px;
+      @apply text-gray-400;
+      //border: none;
+      //border-radius: 3px;
       //transition: all 0.3s ease;
-      transition: none;
-      overflow: hidden;
+      //transition: none;
+      //overflow: hidden;
+      // color: #edf2f7;
+      // text-shadow: 
+      //   -1px -1px 1px #333, 
+      //   2px 2px 1px #fff;
+      //color: #edf2f7;;
+      //letter-spacing: .1em;
+     
     }
     
     &:enabled:after {
@@ -64,9 +72,8 @@
     }
 
     &:disabled {
-      @apply cursor-default bg-cyan-200 font-medium
-      text-cyan-900
-      ;
+      @apply cursor-default bg-cyan-200 font-semibold
+      text-gray-900;
       transition: none;
       overflow: hidden;
     }

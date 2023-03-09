@@ -187,7 +187,7 @@ function createOffscreenContext2D(
   );
 }
 
-function createRenderingContext(target, width, height) {
+function createRenderingContext(target, width, height, wFull = false, hFull = false) {
 
     const contextAttributes = {
         alpha: true,
@@ -197,11 +197,15 @@ function createRenderingContext(target, width, height) {
     const ctx = createContext2D(width, height, contextAttributes);
     const buffer = createOffscreenContext2D(width, height, contextAttributes);
 
-    console.log(width, height);
+    //console.log(width, height);
 
     //ctx.canvas.style.position = "absolute";
-    //ctx.canvas.style.top = "0";
-    //ctx.canvas.style.left = "0";
+    ctx.canvas.style.width = width + "px"
+    ctx.canvas.style.height = height + "px"
+
+    if (wFull) ctx.canvas.style.width = window.innerWidth
+    if (hFull) ctx.canvas.style.height = window.innerHeight
+    //ctx.canvas.style.position = "block"
 
     try {
         target.appendChild(ctx.canvas);

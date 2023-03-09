@@ -1,5 +1,7 @@
 .lattice_container {
-  @apply h-[400px] w-full;
+  @apply relative h-[350px] w-full;
+  max-width: 100%;
+  overflow: hidden;
   background: radial-gradient(ellipse at bottom, #5091DD 0%, #030617 100%);
 }
 
@@ -24,7 +26,7 @@ $borderWeight: 1px;
   @return unquote($value);
 }
 
-$border:  borderShadow(133);
+$border:  borderShadow(150);
 $stripe:  stripeShadow(1000);
 
 .lattice {
@@ -34,7 +36,7 @@ $stripe:  stripeShadow(1000);
   box-shadow: $border;
   
   &:after {
-    @apply h-[400px];
+    @apply absolute h-[350px];
     content: "";
     position: absolute;
     width: $borderWeight;

@@ -5,11 +5,11 @@ const NavButton = ({path, title, currentCategory, selectCategory}) => {
     const [value, setValue] = React.useState(path)
     return (
         <button 
-            className={`custom-btn btn-1`} 
+            className={`custom-btn btn-1 deepshadow`} 
             onClick={(e) => selectCategory(e)}
             value={value}
             disabled={currentCategory === value}
-        >{title}.</button>
+        >{title}</button>
     )
 }
 

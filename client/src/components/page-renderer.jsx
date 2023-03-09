@@ -6,7 +6,7 @@ const PageRenderer = () => {
     const { page } = useParams()
     const Element = lazy(() => import(`../pages/${page}.jsx`))
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div className='h-screen'>Loading...</div>}>
           <Element />
         </Suspense>
       )

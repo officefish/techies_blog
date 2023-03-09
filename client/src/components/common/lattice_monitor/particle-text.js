@@ -10,7 +10,7 @@ import {
 	pow,
 	cos,
 	sin,
-} from '../../../assets/animation'
+} from './utilities'
 import Stats from 'stats.js'
 import { GUI } from 'dat.gui'
 
@@ -38,7 +38,9 @@ const options = {
 	},
 	size: {
 		width: 0,
-        height: 0
+        height: 0,
+		wFull: false,
+		hFull: false
 	}
 }
 const particleProps = [
@@ -263,18 +265,27 @@ function setTextBaseline (baseline = textBaselineTypes.ALPHABETIC) {
 }
 
 function resize () {
-	buffer.canvas.width = width = options.size.width || innerWidth
-  	buffer.canvas.height = height = options.size.height || innerHeight
+
+	const clientWidth = document.documentElement.clientWidth
+	const clientHeight = document.documentElement.clientHeight
+
+	width = options.size.wFull ? clientWidth : (options.size.width || clientWidth)
+	height = options.size.hFull ? clientHeight : (options.size.height || clientHeight)
+
+	buffer.canvas.width = width  
+  	buffer.canvas.height = height 
 
   	buffer.drawImage(ctx.canvas, 0, 0)
 
-	ctx.canvas.width = innerWidth
-  	ctx.canvas.height = innerHeight
+	ctx.canvas.width = width
+  	ctx.canvas.height = height
+	ctx.canvas.style.width = width + 'px'
+  	ctx.canvas.style.height = height + 'px'
   
   	ctx.drawImage(buffer.canvas, 0, 0)
 
-	centerx = 0.5 * innerWidth
-	centery = 0.5 * innerHeight
+	centerx = 0.5 * width
+	centery = 0.5 * height
 
 	imageBuffer = buffer.createImageData(width, height)
 }
@@ -339,8 +350,23 @@ function addParticleOptions () {
 
 const setMessage = (message) => {
 	options.text.message = message.toUpperCase()
-	//console.log(message)
 	setup()
+}
+
+const setFullWidth = isFull => {
+	options.size.wFull = isFull
+}
+
+const setFullHeight = isFull => {
+    options.size.hFull = isFull
+}
+
+const setWidth = isFull => {
+	options.size.width = isFull
+}
+
+const setHeight = isFull => {
+    options.size.height = isFull
 }
 
 export default {
@@ -349,5 +375,9 @@ export default {
 	start,
 	stop,
 	setup,
+	setFullWidth,
+	setFullHeight,
+	setWidth,
+    setHeight,
 	setMessage
 }

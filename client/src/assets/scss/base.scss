@@ -29,11 +29,15 @@
 @import './sliced-effect';
 
 body {
-    background: #edf2f7;
+    //background: #edf2f7;
+    background: #e0e5ec;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
+
 canvas {
-    @apply w-full h-[400px] top-[35px];
+    @apply w-full;
     //height: 100vh;
     //width: 100vw;
   }
